@@ -1,0 +1,5 @@
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+networking:
+  apiServerAddress: "https://262665CC68F0082952EDDBB4DEDEAAB1.gr7.eu-west-2.eks.amazonaws.com"
+  apiServerPort: 2746
