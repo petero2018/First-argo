@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: CronWorkflow
+metadata:
+  name: python-pipeline
+spec:
+  schedule: "* * * * *"
+  startingDeadlineSeconds: 0
+  concurrencyPolicy: "Replace"
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 3
+  suspend: false
+  workflowSpec:
+    entrypoint: ipinfo
+    templates:
+      - name: ipinfo
+        container:
+          image: pipeline/ip_info:latest
+          imagePullPolicy: Never
+          command: [python, -m]
+          args: ["src.ip_info"]

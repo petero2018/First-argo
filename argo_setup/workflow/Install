@@ -1,0 +1,2 @@
+kubectl create -n argo -f argo_setup_v3.0.0-rc9.yml
+kubectl create rolebinding default-admin --clusterrole=admin --serviceaccount=argo:default --namespace=argo

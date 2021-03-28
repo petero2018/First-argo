@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Workflow
+metadata:
+  generateName: python-pipeline
+spec:
+  entrypoint: ipinfo
+  templates:
+  - name: ipinfo
+    retryStrategy:
+      limit: "2"
+      retryPolicy: "Always"
+    container:
+      image: pipeline/ip_info:latest
+      imagePullPolicy: IfNotPresent
+      command: [python, -m]
+      args: ["src.ip_info"]

@@ -1,0 +1,13 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Workflow
+metadata:
+  generateName: python-config-pipeline-
+spec:
+  entrypoint: config
+  templates:
+  - name: config
+    container:
+      image: pipeline/config:latest
+      imagePullPolicy: IfNotPresent
+      command: [python, -m]
+      args: ["src.get_config", "params.json"]

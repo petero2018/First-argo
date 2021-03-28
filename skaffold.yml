@@ -1,0 +1,14 @@
+apiVersion: skaffold/v2beta9
+kind: Config
+metadata:
+  name: pipeline
+build:
+  tagPolicy:
+    sha256: {}
+  artifacts:
+    - image: pipeline/ip_info
+deploy:
+  kubeContext: minikube
+  kubectl:
+    manifests:
+      - kube/ip_cron_workflow.yml

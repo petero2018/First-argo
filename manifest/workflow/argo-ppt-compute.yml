@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Workflow
+metadata:
+  generateName: add-example-
+spec:
+  entrypoint: sayHello
+  templates:
+    - name: sayHello
+      container:
+        image: alpine:latest
+        command: [sh, -c]
+        args: ["echo wf_name: {{workflow.name}};
+                echo namespace: {{workflow.namespace}};
+                echo uid: {{workflow.uid}};
+                echo creationTimestamp: {{workflow.creationTimestamp}};
+                echo input_parameters: {{inputs.parameters}};
+                "]
