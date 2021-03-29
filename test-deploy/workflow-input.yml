@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Workflow
 metadata:
-  generateName: example-
+  name: example-wf-input
 spec:
   entrypoint: main
   arguments:
