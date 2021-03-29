@@ -1,7 +1,9 @@
 apiVersion: argoproj.io/v1alpha1
-kind: WorkflowTemplte
+kind: WorkflowTemplate
 metadata:
   name: whalesay-workflow
+  labels:
+    workflows.argoproj.io/archive-strategy: "false"
 spec:
   entrypoint: whalesay
   templates:
